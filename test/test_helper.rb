@@ -27,6 +27,4 @@ class ActiveSupport::TestCase
     select('PG-13', from: 'Rating')
     click_on "Submit request"
   end
-
-  # Add more helper methods to be used by all tests here...
 end
