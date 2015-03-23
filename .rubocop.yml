@@ -1,0 +1,35 @@
+# Ignore the double/single quote offenses
+StringLiterals:
+  Enabled: false
+
+# Increase the maximum line length to 120 characters
+Metrics/LineLength:
+  Max: 120
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # contaning a URI to be longer than Max.
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+
+# Ignore some of the Rails-generated code in certain directories
+# Source - https://github.com/bbatsov/rubocop#rails
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - '**/bin/**/*'
+    - '**/db/**/*'
+    - '**/config/**/*'
+    - '**/script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+# Ignore the "top-level documentation" cops
+# Source - https://github.com/bbatsov/rubocop/issues/691
+Documentation:
+  Enabled: false
+
+# Ignore the "Use nested module/class definitions instead of compact style" cop
+Style/ClassAndModuleChildren:
+  Enabled: false
