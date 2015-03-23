@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Dvds</h1>
+<h1>Viewing all DVDs</h1>
 
 <table>
   <thead>
@@ -17,14 +17,11 @@
   <tbody>
     <% @dvds.each do |dvd| %>
       <tr>
-        <td><%= dvd.title %></td>
+        <td><%= link_to dvd.title, dvd %></td>
         <td><%= dvd.genre %></td>
         <td><%= dvd.year %></td>
         <td><%= dvd.rated %></td>
         <td><%= dvd.published %></td>
-        <td><%= link_to 'Show', dvd %></td>
-        <td><%= link_to 'Edit', edit_dvd_path(dvd) %></td>
-        <td><%= link_to 'Destroy', dvd, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

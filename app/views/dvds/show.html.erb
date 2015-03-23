@@ -25,5 +25,6 @@
   <%= @dvd.published %>
 </p>
 
-<%= link_to 'Edit', edit_dvd_path(@dvd) %> |
+<%= link_to 'Edit DVD details', edit_dvd_path(@dvd) %> |
+<%= link_to 'Delete DVD', @dvd, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', dvds_path %>

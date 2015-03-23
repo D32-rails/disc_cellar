@@ -17,36 +17,32 @@ class DvdsController < ApplicationController
 
   def create
     @dvd = Dvd.new(dvd_params)
-
-    respond_to do |format|
-      if @dvd.save
-        format.html { redirect_to @dvd, notice: 'Dvd was successfully created.' }
-        format.json { render :show, status: :created, location: @dvd }
+    if @dvd.save
+      if @dvd.published?
+        redirect_to @dvd, notice: "#{@dvd.title} has been added."
       else
-        format.html { render :new }
-        format.json { render json: @dvd.errors, status: :unprocessable_entity }
+        redirect_to @dvd, notice: "Thank you for your request."
       end
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @dvd.update(dvd_params)
-        format.html { redirect_to @dvd, notice: 'Dvd was successfully updated.' }
-        format.json { render :show, status: :ok, location: @dvd }
+    if @dvd.update(dvd_params)
+      if @dvd.published?
+        redirect_to @dvd, notice: "#{@dvd.title} has been updated."
       else
-        format.html { render :edit }
-        format.json { render json: @dvd.errors, status: :unprocessable_entity }
+        redirect_to @dvd, notice: "Thank you for your request."
       end
+    else
+      render :edit
     end
   end
 
   def destroy
     @dvd.destroy
-    respond_to do |format|
-      format.html { redirect_to dvds_url, notice: 'Dvd was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to dvds_url, notice: "This DVD has been deleted."
   end
 
   private
