@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :genre %><br>
@@ -25,13 +25,13 @@
   </div>
   <div class="field">
     <%= f.label :rated %><br>
-    <%= f.text_field :rated %>
+    <%= f.select(:rated, %w[G PG PG-13 R NC-17]) %>
   </div>
   <div class="field">
     <%= f.label :published %><br>
     <%= f.check_box :published %>
   </div>
   <div class="actions">
-    <%= f.submit "" %>
+    <%= f.submit "Submit request" %>
   </div>
 <% end %>

@@ -14,8 +14,9 @@ class ActiveSupport::TestCase
     fill_in "Title", with: "Divergent"
     fill_in "Genre", with: "Adventure, Sci-Fi, Thriller"
     fill_in "Year", with: 2014
-    select('PG-13', from: 'Rating')
-    click_on "Approved"
+    select('PG-13', from: 'Rated')
+    check "Published"
+    click_on "Submit request"
   end
 
   def request_dvd
@@ -24,7 +25,7 @@ class ActiveSupport::TestCase
     fill_in "Title", with: "Divergent"
     fill_in "Genre", with: "Adventure, Sci-Fi, Thriller"
     fill_in "Year", with: 2014
-    select('PG-13', from: 'Rating')
+    select('PG-13', from: 'Rated')
     click_on "Submit request"
   end
 end
