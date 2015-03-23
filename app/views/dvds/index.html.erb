@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Genre</th>
       <th>Year</th>
       <th>Rated</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @dvds.each do |dvd| %>
       <tr>
+        <td><%= dvd.name %></td>
         <td><%= dvd.genre %></td>
         <td><%= dvd.year %></td>
         <td><%= dvd.rated %></td>

@@ -69,6 +69,6 @@ class DvdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dvd_params
-      params.require(:dvd).permit(:genre, :year, :rated, :published)
+      params.require(:dvd).permit(:genre, :year, :rated, :published, :name)
     end
 end
