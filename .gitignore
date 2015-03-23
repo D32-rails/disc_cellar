@@ -15,4 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+# User settings
 .DS_Store
+.env

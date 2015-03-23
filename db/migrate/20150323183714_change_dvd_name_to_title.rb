@@ -1,9 +1,9 @@
 class ChangeDvdNameToTitle < ActiveRecord::Migration
-  # def up
-  #   add_column :dvds, :title, :string
-  # end
+  def up
+    rename_column :dvds, :name, :title
+  end
 
-  # def down
-  #   remove_column :dvds, :name
-  # end
+  def down
+
+  end
 end
