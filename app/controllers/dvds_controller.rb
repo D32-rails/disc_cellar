@@ -56,6 +56,6 @@ class DvdsController < ApplicationController
   end
 
   def dvd_params
-    params.require(:dvd).permit(:genre, :year, :rated, :published, :name)
+    params.require(:dvd).permit(:genre, :year, :rated, :published, :title)
   end
 end

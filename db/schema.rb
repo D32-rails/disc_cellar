@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323181708) do
+ActiveRecord::Schema.define(version: 20150323183714) do
 
   create_table "dvds", force: :cascade do |t|
     t.string   "genre"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150323181708) do
     t.boolean  "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
+    t.string   "title"
   end
 
 end
