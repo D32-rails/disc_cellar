@@ -28,4 +28,18 @@ class ActiveSupport::TestCase
     select('PG-13', from: 'Rated')
     click_on "Submit request"
   end
+
+  def sign_in_with_facebook
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.add_mock(:facebook,
+                            {
+                              uid: '12345',
+                              info: { name: 'Test User' },
+                              credentials: { token: 'ABCDEF', expires_at: 3.hours.from_now }
+                              })
+    visit root_path
+    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
+
+    click_on("Sign in with Facebook")
+  end
 end
