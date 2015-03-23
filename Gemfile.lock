@@ -66,6 +66,7 @@ GEM
     coffee-script-source (1.9.1)
     columnize (0.9.0)
     debug_inspector (0.0.2)
+    dotenv (2.0.0)
     erubis (2.7.0)
     execjs (2.4.0)
     faker (1.4.3)
@@ -238,6 +239,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
+  dotenv
   faker
   guard
   jbuilder (~> 2.0)
