@@ -1,0 +1,33 @@
+<%= form_for(@dvd) do |f| %>
+  <% if @dvd.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dvd.errors.count, "error") %> prohibited this dvd from being saved:</h2>
+
+      <ul>
+      <% @dvd.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :genre %><br>
+    <%= f.text_field :genre %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :rated %><br>
+    <%= f.text_field :rated %>
+  </div>
+  <div class="field">
+    <%= f.label :published %><br>
+    <%= f.check_box :published %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
