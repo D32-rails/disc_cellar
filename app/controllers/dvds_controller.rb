@@ -1,28 +1,20 @@
 class DvdsController < ApplicationController
   before_action :set_dvd, only: [:show, :edit, :update, :destroy]
 
-  # GET /dvds
-  # GET /dvds.json
   def index
     @dvds = Dvd.all
   end
 
-  # GET /dvds/1
-  # GET /dvds/1.json
   def show
   end
 
-  # GET /dvds/new
   def new
     @dvd = Dvd.new
   end
 
-  # GET /dvds/1/edit
   def edit
   end
 
-  # POST /dvds
-  # POST /dvds.json
   def create
     @dvd = Dvd.new(dvd_params)
 
@@ -37,8 +29,6 @@ class DvdsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /dvds/1
-  # PATCH/PUT /dvds/1.json
   def update
     respond_to do |format|
       if @dvd.update(dvd_params)
@@ -51,8 +41,6 @@ class DvdsController < ApplicationController
     end
   end
 
-  # DELETE /dvds/1
-  # DELETE /dvds/1.json
   def destroy
     @dvd.destroy
     respond_to do |format|
@@ -62,13 +50,12 @@ class DvdsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dvd
-      @dvd = Dvd.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def dvd_params
-      params.require(:dvd).permit(:genre, :year, :rated, :published)
-    end
+  def set_dvd
+    @dvd = Dvd.find(params[:id])
+  end
+
+  def dvd_params
+    params.require(:dvd).permit(:genre, :year, :rated, :published, :name)
+  end
 end
