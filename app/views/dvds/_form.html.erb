@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
     <%= f.label :genre %><br>
     <%= f.text_field :genre %>
   </div>
@@ -28,6 +32,6 @@
     <%= f.check_box :published %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "" %>
   </div>
 <% end %>

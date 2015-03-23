@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150323190305) do
     t.integer  "year"
     t.string   "rated"
     t.boolean  "published"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
