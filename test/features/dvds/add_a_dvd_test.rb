@@ -8,12 +8,12 @@ feature "add a DVD" do
   end
 
   scenario "user can request new DVDs" do
-    RequestDVD
+    request_dvd
     page.must_have_content "Thank you for your request."
   end
 
   scenario "an admin can approve a new DVD request" do
-    CreateDVD
+    create_dvd
     page.must_have_content "The Princess Bride has been added."
   end
 end

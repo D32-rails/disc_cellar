@@ -8,7 +8,7 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  def CreateDVD
+  def create_dvd
     visit dvds_path
     click_on "Request a new DVD"
     fill_in "Title", with: "Divergent"
@@ -18,7 +18,7 @@ class ActiveSupport::TestCase
     click_on "Approved"
   end
 
-  def RequestDVD
+  def request_dvd
     visit dvds_path
     click_on "Request a new DVD"
     fill_in "Title", with: "Divergent"

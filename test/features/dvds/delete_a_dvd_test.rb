@@ -2,7 +2,7 @@ require "test_helper"
 
 feature "delete a DVD" do
   scenario "admin users can delete a DVD from the global collection" do
-    CreateDVD
+    create_dvd
     click_on "Divergent"
     click_on "Delete movie"
     page.must_have_content "The movie has been deleted."

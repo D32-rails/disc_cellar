@@ -2,7 +2,7 @@ require "test_helper"
 
 feature "edit a DVD" do
   scenario "users can edit movie details from the global collection" do
-    CreateDVD
+    create_dvd
     click_on "Divergent"
     click_on "Edit movie details"
     fill_in "Genre", with: "Adventure, Sci-Fi"
@@ -11,7 +11,7 @@ feature "edit a DVD" do
   end
 
   scenario "admin user can edit movie details from the global collection" do
-    CreateDVD
+    create_dvd
     click_on "Divergent"
     click_on "Edit movie details"
     fill_in "Genre", with: "Adventure, Sci-Fi"
