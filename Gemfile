@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug'
-  gem 'dotenv'
+  gem 'dotenv-rails'
   gem 'faker'
   gem 'guard'
   gem 'minitest-rails-capybara'
