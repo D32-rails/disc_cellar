@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324190018) do
+ActiveRecord::Schema.define(version: 20150324213004) do
 
   create_table "dvds", force: :cascade do |t|
     t.string   "genre"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20150324190018) do
     t.string   "title"
     t.string   "image_url"
   end
+
+  create_table "dvds_users", id: false, force: :cascade do |t|
+    t.integer "dvd_id",  null: false
+    t.integer "user_id", null: false
+  end
+
+  add_index "dvds_users", ["dvd_id"], name: "index_dvds_users_on_dvd_id"
+  add_index "dvds_users", ["user_id"], name: "index_dvds_users_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
