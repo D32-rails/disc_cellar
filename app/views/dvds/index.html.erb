@@ -1,32 +1,36 @@
-<p id="notice"><%= notice %></p>
+<h4 id="notice"><%= notice %></h4>
+<div class="page-title">
+  <h1>Viewing all DVDs</h1>
+</div><br/>
+<div class="container"
+    <div class="col-md-6 col-md-offset-1">
+      <table class="dvd-index">
+        <thead>
+          <tr>
+            <th class="col-md-3 col-md-offset-1 show-table">Title</th>
+            <th class="col-md-2 show-table">Genre</th>
+            <th class="col-md-1 show-table">Year</th>
+            <th class="col-md-1 show-table">Rated</th>
+            <th class="col-md-2 show-table">Published</th>
+          </tr>
+        </thead>
 
-<h1>Viewing all DVDs</h1>
+        <tbody>
+          <% @dvds.each do |dvd| %>
+            <tr>
+              <td class="col-md-3 col-md-offset-1 show-table"><%= link_to dvd.title, dvd %></td>
+              <td class="col-md-2 show-table"><%= dvd.genre %></td>
+              <td class="col-md-1 show-table"><%= dvd.year %></td>
+              <td class="col-md-1 show-table"><%= dvd.rated %></td>
+              <td class="col-md-2 show-table"><%= dvd.published %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <br>
+    <div class="actions">
+      <a class="btn btn-default" <%= link_to 'Request a new DVD', new_dvd_path %></a>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Genre</th>
-      <th>Year</th>
-      <th>Rated</th>
-      <th>Published</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @dvds.each do |dvd| %>
-      <tr>
-        <td><%= link_to dvd.title, dvd %></td>
-        <td><%= dvd.genre %></td>
-        <td><%= dvd.year %></td>
-        <td><%= dvd.rated %></td>
-        <td><%= dvd.published %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Request a new DVD', new_dvd_path %>

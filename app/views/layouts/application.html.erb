@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DiscCellar</title>
+  <title>Disc Cellar</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %> |
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %> |
-  <% end %>
-  <%= link_to "DVDs", dvds_path %> |
-  <%= link_to "Members", users_path %>
+<div class="container">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+      <a class="navbar-brand" <%= link_to "Disc Cellar", root_path %>></a>
+    </div>
+    <div>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "See DVDs", dvds_path %></li>
+      <li><%= link_to "Members", users_path %></li>
+      <% if current_user %>
+        <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+        <div>
+          <p class="navbar-text">Signed in as <strong><%= current_user.name %></strong>!</p>
+       </div>
+      <% else %>
+        <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
-<% flash.each do |key, value| %>
-  <div class="alert-box round <%= flash_class(key) %>">
-    <%= value %>
-  </div>
-<% end %>
+<%= render 'layouts/flash_messages' %>
 
 <%= yield %>
 

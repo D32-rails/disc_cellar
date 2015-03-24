@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323190305) do
+ActiveRecord::Schema.define(version: 20150323224025) do
 
   create_table "dvds", force: :cascade do |t|
     t.string   "genre"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150323190305) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "title"
+    t.string   "image_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150323190305) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.text     "address"
   end
 
 end
