@@ -56,8 +56,8 @@ class ApplicationPolicy
       false
     end
 
-    def unauthenticated?
-      true
+    def member?
+      false
     end
   end
 end

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   enum role: [:null_user, :member, :admin]
 
   def set_default_role
-    self.role ||= 1
+    self.role ||= :member
   end
 
   def self.from_omniauth(auth)
@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
       user.image = auth.info.image
       user.oauth_token = auth.credentials.oauth_token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.set_default_role
       user.save!
     end
   end

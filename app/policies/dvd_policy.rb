@@ -3,8 +3,8 @@ class DvdPolicy < ApplicationPolicy
     def resolve
       if user.admin?
         scope.all
-      elsif user.authenticated?
-        user.dvds + scope.where(published: true)
+      elsif user.member?
+        scope.where(published: true)
       else
         scope.where(published: true)
       end
