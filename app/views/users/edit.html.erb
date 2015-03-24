@@ -1,0 +1,45 @@
+<div class="page-title">
+  <h1>Editing Profile</h1>
+</div><br/>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this dvd from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container">
+    <div class="col-md-6 col-md-offset-1">
+      <div class="field form">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, value: @user.name, disabled: true %>
+      </div>
+      <div class="field form">
+        <%= f.label :email %><br>
+        <%= f.text_field :email, value: @user.email, disabled: true %>
+      </div>
+      <div class="field form">
+        <%= f.label :address %><br>
+        <%= f.text_field :address %>
+      </div>
+      </div>
+      <div class="field form">
+        <%= f.label :role %><br>
+        <%= f.text_field :role %>
+      </div>
+    <div class="actions">
+      <%= f.submit "Submit", class: "btn btn-default" %>
+      <a class="btn btn-default" <%= link_to 'Back', dvds_path %></a>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
