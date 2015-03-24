@@ -8,6 +8,7 @@ one:
   oauth_token: ABCDEF
   oauth_expires_at: 2017-03-23 12:03:05
   address: 111 First Street
+  email: one@example.com
 
 two:
   provider: facebook
@@ -16,3 +17,4 @@ two:
   oauth_token: BCDEFG
   oauth_expires_at: 2017-03-23 12:03:05
   address: 222 Second Street
+  email: two@example.com

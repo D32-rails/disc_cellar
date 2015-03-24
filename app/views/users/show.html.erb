@@ -1,6 +1,24 @@
+<h4 id="notice"><%= notice %></h4>
 <div class="page-title">
   <h1><%= @user.name %></h1>
 </div><br/>
+<div class="container"
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <p class="show-table">
+        <strong>Name:</strong>
+        <%= @user.name %><br />
 
-<p>user email</p>
-<p>user image</p>
+        <strong>Email:</strong>
+        <%= @user.email %><br />
+
+        <strong>Address:</strong>
+        <%= @user.address %><br />
+      </p>
+    <div class="actions">
+      <a class="btn btn-default"<%= link_to 'Edit profile', edit_user_path(@user) %> </a>
+      <a class="btn btn-default" <%= link_to 'Back', users_path %></a>
+    </div>
+    </div>
+  </div>
+</div>
