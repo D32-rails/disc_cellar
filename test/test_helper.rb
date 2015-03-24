@@ -9,6 +9,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def create_dvd
+    sign_in_with_facebook_as_admin
     visit dvds_path
     click_on "Request a new DVD"
     fill_in "Title", with: "Divergent"
@@ -17,6 +18,7 @@ class ActiveSupport::TestCase
     select('PG-13', from: 'Rated')
     check "Published"
     click_on "Submit request"
+    click_on "Sign out"
   end
 
   def request_dvd
@@ -35,6 +37,20 @@ class ActiveSupport::TestCase
                             {
                               uid: '12345',
                               info: { name: 'Test User' },
+                              credentials: { token: 'ABCDEF', expires_at: 3.hours.from_now }
+                              })
+    visit root_path
+    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
+
+    click_on("Sign in with Facebook")
+  end
+
+  def sign_in_with_facebook_as_admin
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.add_mock(:facebook,
+                            {
+                              uid: '12345',
+                              info: { name: 'Test User', role: 2 },
                               credentials: { token: 'ABCDEF', expires_at: 3.hours.from_now }
                               })
     visit root_path
