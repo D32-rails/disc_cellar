@@ -28,10 +28,12 @@
         <%= f.label :rated %><br>
         <%= f.select(:rated, %w[G PG PG-13 R NC-17]) %>
       </div>
-      <div class="field form">
-        <%= f.label :published %><br>
-        <%= f.check_box :published %>
-      </div>
+      <% if current_user.admin? %>
+        <div class="field form">
+          <%= f.label :published %><br>
+          <%= f.check_box :published %>
+        </div>
+      <% end %>
     <div class="actions">
       <input class="btn btn-default" type="submit" value="Submit request">
       <a class="btn btn-default" <%= link_to 'Back', dvds_path %></a>
