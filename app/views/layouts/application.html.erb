@@ -15,7 +15,8 @@
     </div>
     <div>
     <ul class="nav navbar-nav">
-      <li><a <%= link_to "See DVDs", dvds_path %> ></a></li>
+      <li><%= link_to "See DVDs", dvds_path %></li>
+      <li><%= link_to "Members", users_path %></li>
       <% if current_user %>
         <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
         <div>
