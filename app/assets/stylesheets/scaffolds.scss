@@ -1,21 +1,66 @@
 body {
+  position: relative;
+  padding-top: 200px;
   background-color: #fff;
-  color: #333;
+  background-image: image-url('library.jpg');
+  background-repeat: repeat-x;
+  background-size:100%;
+  color: #5F1C58;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
 p, ol, ul, td {
+  padding: 10px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}
+
+nav {
+  color: #fff;
+}
+
+ul {
+  color: #fff;
+}
+
+.form {
+  color: #fff;
+}
+
+.page-title {
+  background-color: #fff;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.show-table {
+  font-size: 1.2em;
+  padding: 8px;
+}
+
+.dvd-index {
+  background-color: #fff;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+p {
+  background-color: #fff;
+  border-radius: 10px;
+  opacity: 0.8;
 }
 
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
+}
+
+.show-table {
+  font-size: 1.2em;
 }
 
 a {
@@ -33,6 +78,11 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+.vcenter {
+    vertical-align: middle;
+    display: inline-block;
 }
 
 #notice {
