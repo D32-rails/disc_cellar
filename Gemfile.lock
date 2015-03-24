@@ -158,6 +158,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.3)
+      pry (>= 0.9.10)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     pundit (0.3.0)
@@ -257,6 +259,7 @@ DEPENDENCIES
   minitest-rails-capybara
   omniauth-facebook
   pg
+  pry-rails
   puma
   pundit
   rails (= 4.2.0)
