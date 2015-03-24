@@ -6,9 +6,11 @@ one:
   year: 1
   rated: MyString
   published: false
+  image_url:
 
 two:
   genre: MyString
   year: 1
   rated: MyString
   published: false
+  image_url:

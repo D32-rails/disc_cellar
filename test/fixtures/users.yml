@@ -2,15 +2,17 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  provider: MyString
-  uid: MyString
-  name: MyString
-  oauth_token: MyString
-  oauth_expires_at: 2015-03-23 12:03:05
+  provider: facebook
+  uid: 11111
+  name: Test One
+  oauth_token: ABCDEF
+  oauth_expires_at: 2017-03-23 12:03:05
+  address: 111 First Street
 
 two:
-  provider: MyString
-  uid: MyString
-  name: MyString
-  oauth_token: MyString
-  oauth_expires_at: 2015-03-23 12:03:05
+  provider: facebook
+  uid: 22222
+  name: Test Two
+  oauth_token: BCDEFG
+  oauth_expires_at: 2017-03-23 12:03:05
+  address: 222 Second Street
