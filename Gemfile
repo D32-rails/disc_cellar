@@ -21,4 +21,5 @@ group :development, :test do
   gem 'minitest-rails-capybara'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'pry-rails'
 end
