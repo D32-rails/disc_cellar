@@ -5,9 +5,9 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-Rake::TestTask.new("test:features" => "test:prepare") do |t|
-  t.libs << "test"
-  t.pattern = "test/**/*_test.rb"
-end
+# Rake::TestTask.new("test:features" => "test:prepare") do |t|
+#   t.libs << "test"
+#   t.pattern = "test/**/*_test.rb"
+# end
 
-Rake::Task["test:run"].enhance ["test:features"]
+# Rake::Task["test:run"].enhance ["test:features"]
