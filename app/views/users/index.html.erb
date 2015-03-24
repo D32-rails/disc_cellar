@@ -1,4 +1,7 @@
-<h1>Members:</h1>
+<div class="page-title">
+  <h1>Members:</h1>
+</div><br/>
+
 <% @user.each do |user| %>
   <p><%= link_to user.name, user_path(user.id) %></p>
 <% end %>

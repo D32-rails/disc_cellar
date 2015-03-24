@@ -1,30 +1,29 @@
-<p id="notice"><%= notice %></p>
+<h4 id="notice"><%= notice %></h4>
+<div class="page-title">
+  <h1><%= @dvd.title %></h1>
+</div><br/>
+<div class="container"
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <p class="show-table">
+        <strong>Genre:</strong>
+        <%= @dvd.genre %><br />
 
-<p>
-  <strong>Title:</strong>
-  <%= @dvd.title %>
-</p>
+        <strong>Year:</strong>
+        <%= @dvd.year %><br />
 
-<p>
-  <strong>Genre:</strong>
-  <%= @dvd.genre %>
-</p>
+        <strong>Rated:</strong>
+        <%= @dvd.rated %><br />
 
-<p>
-  <strong>Year:</strong>
-  <%= @dvd.year %>
-</p>
+        <strong>Published:</strong>
+        <%= @dvd.published %><br />
+      </p>
+    <div class="actions">
+      <a class="btn btn-default"<%= link_to 'Edit DVD details', edit_dvd_path(@dvd) %> </a>
+      <a class="btn btn-default" <%= link_to 'Delete DVD', @dvd, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+      <a class="btn btn-default" <%= link_to 'Back', dvds_path %></a>
+    </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Rated:</strong>
-  <%= @dvd.rated %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @dvd.published %>
-</p>
-
-<%= link_to 'Edit DVD details', edit_dvd_path(@dvd) %> |
-<%= link_to 'Delete DVD', @dvd, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', dvds_path %>
