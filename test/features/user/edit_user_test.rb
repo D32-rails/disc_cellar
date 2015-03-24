@@ -8,10 +8,13 @@ feature "Edit a User's Profile" do
   end
 
   scenario "users can edit address" do
-
+    visit edit_user_path(users(:one).id)
+    fill_in('Address', with: '111 Eleventh Ave')
+    click_on('Submit')
+    page.text.must_include('111 Eleventh Ave')
   end
 
   scenario "users cannot edit other user's profiles" do
-
+    # Need to write this when Pundit is installed
   end
 end
