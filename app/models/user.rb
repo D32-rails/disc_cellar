@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :dvds
+  has_many :borrowships
 
   enum role: [:null_user, :member, :admin]
 
