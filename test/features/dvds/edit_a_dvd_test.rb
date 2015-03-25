@@ -11,13 +11,13 @@ feature "edit a DVD" do
 
   scenario "admin user can edit DVD details from the global collection" do
     create_dvd
-    sign_in_with_facebook_as_admin
+    sign_in(:admin)
     visit dvds_path
     click_on "Divergent"
     click_on "Edit DVD details"
     fill_in "Genre", with: "Adventure, Sci-Fi"
     check "Published"
     click_on "Submit request"
-    page.must_have_content "Divergent has been updated."
+    page.must_have_content "Divergent has been added to your collection."
   end
 end

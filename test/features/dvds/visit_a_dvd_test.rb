@@ -3,7 +3,7 @@ require "test_helper"
 feature "visit a DVD" do
   scenario "Admin can view a DVD" do
     create_dvd
-    sign_in_with_facebook_as_admin
+    sign_in(:admin)
     visit dvds_path
     click_on "Divergent"
     page.must_have_content "2014"

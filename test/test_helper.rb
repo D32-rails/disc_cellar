@@ -9,7 +9,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def create_dvd
-    sign_in_with_facebook_as_admin
+    sign_in(:admin)
     visit dvds_path
     click_on "Request a new DVD"
     fill_in "Title", with: "Divergent"
@@ -31,34 +31,16 @@ class ActiveSupport::TestCase
     click_on "Submit request"
   end
 
-  def sign_in_with_facebook
+  def sign_in(user = :one)
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(:facebook,
-                            {
-                              uid: '12345',
-                              info: { name: 'Test User' },
-                              credentials: { token: 'ABCDEF', expires_at: 3.hours.from_now }
-                              })
+                             uid: users(user).uid,
+                             info: { name: users(user).name },
+                             credentials: { token: users(user).oauth_token, expires_at: users(user).oauth_expires_at }
+                            )
     visit root_path
     Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
 
     click_on("Sign in with Facebook")
-  end
-
-  def sign_in_with_facebook_as_admin
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.add_mock(:facebook,
-                            {
-                              uid: '12345',
-                              info: { name: 'Test User' },
-                              credentials: { token: 'ABCDEF', expires_at: 3.hours.from_now }
-                              })
-    visit root_path
-    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
-
-    click_on("Sign in with Facebook")
-    u = User.last
-    u.role = 2
-    u.save!
   end
 end
