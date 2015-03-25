@@ -18,6 +18,6 @@ feature "edit a DVD" do
     fill_in "Genre", with: "Adventure, Sci-Fi"
     check "Published"
     click_on "Submit request"
-    page.must_have_content "Divergent has been updated."
+    page.must_have_content "Divergent has been added to your collection."
   end
 end

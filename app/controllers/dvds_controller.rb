@@ -36,7 +36,7 @@ class DvdsController < ApplicationController
 
     if @dvd.update(dvd_params)
       if @dvd.published?
-        redirect_to dvds_path
+        redirect_to dvds_path, notice: "#{@dvd.title} has been added to your collection."
       else
         redirect_to @dvd, notice: "Thank you for your request."
       end
