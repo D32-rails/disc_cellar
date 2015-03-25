@@ -3,6 +3,7 @@ require "test_helper"
 feature "view all DVDs" do
   scenario "members can see all DVDs" do
     create_dvd
+    sign_in_with_facebook
     visit dvds_path
     page.must_have_content "Divergent"
     page.must_have_content "Viewing all DVDs"

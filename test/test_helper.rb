@@ -40,7 +40,7 @@ class ActiveSupport::TestCase
                               credentials: { token: 'ABCDEF', expires_at: 3.hours.from_now }
                               })
     visit root_path
-    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
+    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
 
     click_on("Sign in with Facebook")
   end
@@ -50,12 +50,15 @@ class ActiveSupport::TestCase
     OmniAuth.config.add_mock(:facebook,
                             {
                               uid: '12345',
-                              info: { name: 'Test User', role: 2 },
+                              info: { name: 'Test User' },
                               credentials: { token: 'ABCDEF', expires_at: 3.hours.from_now }
                               })
     visit root_path
-    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
+    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
 
     click_on("Sign in with Facebook")
+    u = User.last
+    u.role = 2
+    u.save!
   end
 end

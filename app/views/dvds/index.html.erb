@@ -11,31 +11,30 @@
             <th class="col-md-2 show-table">Genre</th>
             <th class="col-md-1 show-table">Year</th>
             <th class="col-md-1 show-table">Rated</th>
-            <th class="col-md-2 show-table">Published</th>
           </tr>
         </thead>
 
         <tbody>
           <% @dvds.each do |dvd| %>
-          <% if dvd.published?%>
-            <tr>
-              <td class="col-md-3 col-md-offset-1 show-table"><%= link_to dvd.title, dvd %></td>
-              <td class="col-md-2 show-table"><%= dvd.genre %></td>
-              <td class="col-md-1 show-table"><%= dvd.year %></td>
-              <td class="col-md-1 show-table"><%= dvd.rated %></td>
-              # <% if policy(dvd).publish %>
-                <td class="col-md-2 show-table">Unpublished</td>
-              # <% end %>
-            </tr>
+            <% if dvd.published? || DvdPolicy.new(current_user, @dvd).publish %>
+              <tr>
+                <td class="col-md-3 col-md-offset-1 show-table"><%= link_to dvd.title, dvd %></td>
+                <td class="col-md-2 show-table"><%= dvd.genre %></td>
+                <td class="col-md-1 show-table"><%= dvd.year %></td>
+                <td class="col-md-1 show-table"><%= dvd.rated %></td>
+                <% if !dvd.published? %>
+                  <td class="col-md-2 show-table">Unpublished</td>
+                <% end %>
+              </tr>
             <% end %>
           <% end %>
         </tbody>
       </table>
-    <br>
-    <% if DvdPolicy.new(current_user, @dvd).create? %>
-    <div class="actions">
-      <a class="btn btn-default" <%= link_to 'Request a new DVD', new_dvd_path %></a>
-    </div>
+      <br>
+      <% if DvdPolicy.new(current_user, @dvd).create? %>
+      <div class="actions">
+        <a class="btn btn-default" <%= link_to 'Request a new DVD', new_dvd_path %></a>
+      </div>
     <% end %>
   </div>
 </div>

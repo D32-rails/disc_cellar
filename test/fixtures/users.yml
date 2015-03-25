@@ -18,3 +18,13 @@ two:
   oauth_expires_at: 2017-03-23 12:03:05
   address: 222 Second Street
   email: two@example.com
+
+admin:
+  provider: facebook
+  uid: 33333
+  name: Test Three
+  role: 2
+  oauth_token: BCDEFG
+  oauth_expires_at: 2017-03-23 12:03:05
+  address: 222 Second Street
+  email: three@example.com
