@@ -28,7 +28,7 @@
                   <td class="col-md-2 show-table">Unpublished</td>
                 <% end %>
 
-                <% if DvdPolicy.new(current_user, @dvd).update? %>
+                <% if DvdPolicy.new(current_user, @dvd).show? %>
                   <% if current_user.dvds.include?(dvd) %>
                     <td class="col-md-1 show-table">
                       Already in collection
