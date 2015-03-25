@@ -19,13 +19,23 @@
         <%= @user.role %><br />
       </p>
     <div class="actions">
-      <a class="btn btn-default"<%= link_to 'Edit profile', edit_user_path(@user) %> </a>
-      <a class="btn btn-default" <%= link_to 'Back', users_path %></a>
+      <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-default" %>
+      <%= link_to 'Back', users_path, class: "btn btn-default" %>
     </div>
 
       <div>
         <% @user.dvds.each do |dvd| %>
-          <p><%= dvd.title %></p>
+          <p>
+            <%= dvd.title %>
+            <% if current_user %>
+              <%= form_for(@borrowship) do |f| %>
+                <%= f.hidden_field :borrower_id, value: current_user.id %>
+                <%= f.hidden_field :lender_id, value: @user.id %>
+                <%= f.hidden_field :dvd_id, value: dvd.id %>
+                <%= f.submit "Ask to Borrow" %>
+              <% end %>
+            <% end %>
+          </p>
         <% end %>
 
       </div>
