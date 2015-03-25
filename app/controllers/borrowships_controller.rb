@@ -1,22 +1,28 @@
 class BorrowshipsController < ApplicationController
+  def index
+    @borrowships = Borrowship.all
+  end
+
+  def show
+    @borrowship = current_user.borrowships
+  end
+
   def create
-    @borrowship = current_user.borrowships.build(borrowship_params)
-    # if @borrowship.save
-    #   flash[:notice] = "Request sent to the lender!"
-    #   redirect_to dvds_path
-    # else
-    #   flash[:notice] = "Unable to add request."
-    #   redirect_to dvds_path
-    # end
+    @borrowship = Borrowship.create(borrowship_params)
+    if @borrowship.save
+      redirect_to user_path(@borrowship.lender.id), notice: "Request sent to lender!"
+    else
+      redirect_to user_path(@borrowship.lender.id), notice: "Unable to request the DVD"
+    end
   end
 
   def update
     @borrowship = Borrowship.find(params[:id])
     if @borrowship.update(borrowship_params)
-      flash[:notice] = "Request sent to lender!"
+      flash[:notice] = "Something went right!"
       redirect_to dvds_path
     else
-      flash[:notice] = "Unable to request the DVD"
+      flash[:notice] = "Something went wrong!"
       redirect_to dvds_path
     end
   end

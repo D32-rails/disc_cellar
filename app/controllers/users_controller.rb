@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def show
     @dvds = @user.dvds.all
-    @borrowship = Borrowship.create
+    @borrowship = Borrowship.new
   end
 
   def destroy
