@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: "Thank you for your request."
+      redirect_to dvds_path, notice: "Your profile has been updated."
     else
       render :edit
     end
