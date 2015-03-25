@@ -1,0 +1,12 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dvd_id: MyString
+  borrower_id: MyString
+  lender_id: MyString
+
+two:
+  dvd_id: MyString
+  borrower_id: MyString
+  lender_id: MyString

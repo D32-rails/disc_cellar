@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :dvds
+  has_many :borrowings, class_name: "Borrowship", foreign_key: :borrower_id
+  has_many :lendings, class_name: "Borrowship", foreign_key: :lender_id
 
   enum role: [:null_user, :member, :admin]
 
