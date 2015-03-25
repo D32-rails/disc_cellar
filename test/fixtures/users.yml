@@ -5,6 +5,7 @@ one:
   provider: facebook
   uid: 11111
   name: Test One
+  role: 1
   oauth_token: ABCDEF
   oauth_expires_at: 2017-03-23 12:03:05
   address: 111 First Street
@@ -14,6 +15,7 @@ two:
   provider: facebook
   uid: 22222
   name: Test Two
+  role: 1
   oauth_token: BCDEFG
   oauth_expires_at: 2017-03-23 12:03:05
   address: 222 Second Street
