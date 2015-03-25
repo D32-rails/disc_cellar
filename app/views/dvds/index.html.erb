@@ -29,14 +29,21 @@
                 <% end %>
 
                 <% if DvdPolicy.new(current_user, @dvd).update? %>
-                  <%= form_for([@user, dvd]) do |f| %>
+                  <% if current_user.dvds.include?(dvd) %>
                     <td class="col-md-1 show-table">
-                      <%= f.hidden_field :user_id, value: current_user.id %>
-                      <%= f.submit "Add to My Collection" %>
+                      Already in collection
                     </td>
+                  <% else %>
+
+                    <%= form_for([@user, dvd]) do |f| %>
+                      <td class="col-md-1 show-table">
+                        <%= f.hidden_field :user_id, value: current_user.id %>
+                        <%= f.submit "Add to My Collection" %>
+                      </td>
+                    <% end %>
+
                   <% end %>
                 <% end %>
-
 
 
               </tr>
