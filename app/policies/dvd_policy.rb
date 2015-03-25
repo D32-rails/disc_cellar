@@ -16,11 +16,11 @@ class DvdPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || user.member?
+    user.admin?
   end
 
   def destroy?
-    user.admin? || !record.published?
+    user.admin?
   end
 
   def publish
