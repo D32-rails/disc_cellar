@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to dvds_path, notice: "Your profile has been updated."
+      redirect_to user_path, notice: "Your profile has been updated."
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params[:user][:dvd_ids] = params[:user][:dvd_ids].split(" ").map(&:to_i)
+    params[:user][:dvd_ids] = params[:user][:dvd_ids].split(" ").map(&:to_i) unless params[:user][:dvd_ids].nil?
     params.require(:user).permit(:name, :address, :role, dvd_ids:[])
   end
 end
