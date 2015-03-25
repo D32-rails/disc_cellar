@@ -19,6 +19,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'faker'
   gem 'guard'
+  gem 'guard-minitest'
   gem 'minitest-rails-capybara'
   gem 'spring'
   gem 'sqlite3'
