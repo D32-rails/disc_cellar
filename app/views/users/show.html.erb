@@ -28,13 +28,14 @@
         <% @user.dvds.each do |dvd| %>
           <tr>
             <td class="col-md-2 show-table"><%= link_to dvd.title, dvd %></td>
-            <%= form_for(current_user) do |f| %>
-              <td class="col-md-1 show-table">
-                <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
-                <%= f.submit "Remove from My Collection" %>
-              </td>
-            <% end %>
             <% if current_user %>
+              <td class="col-md-1 show-table">
+                <%= form_for(current_user) do |f| %>
+                  <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
+                  <%= f.submit "Remove from My Collection" %>
+                <% end %>
+              </td>
+
               <td>
                 <%= form_for(@borrowship) do |f| %>
                   <%= f.hidden_field :borrower_id, value: current_user.id %>
