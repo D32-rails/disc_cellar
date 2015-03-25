@@ -28,7 +28,7 @@
         <%= f.label :rated %><br>
         <%= f.select(:rated, %w[G PG PG-13 R NC-17]) %>
       </div>
-      <% if current_user.admin? %>
+      <% if DvdPolicy.new(current_user, @dvd).publish %>
         <div class="field form">
           <%= f.label :published %><br>
           <%= f.check_box :published %>

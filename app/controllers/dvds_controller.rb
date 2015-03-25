@@ -1,6 +1,6 @@
 class DvdsController < ApplicationController
-  before_action :authorize_dvd, only:[:edit, :update]
   before_action :set_dvd, only: [:show, :edit, :update, :destroy]
+  # before_filter :verify_authorized, only: [:edit, :destroy]
 
   def index
     @dvds = Dvd.all
@@ -52,8 +52,9 @@ class DvdsController < ApplicationController
     @dvd = Dvd.find(params[:id])
   end
 
-  def authorize_dvd
-    authorize DVD
+  def verify_authorized
+    @dvd = Dvd.find(params[:id])
+    authorize @dvd
   end
 
   def dvd_params

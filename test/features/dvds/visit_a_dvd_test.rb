@@ -10,15 +10,15 @@ feature "visit a DVD" do
     page.must_have_content "PG-13"
   end
 
-  scenario "Member can view a DVD" do
-    create_dvd
-    sign_in_with_facebook
-    visit dvds_path
-    click_on "Divergent"
-    page.must_have_content "2014"
-    page.must_have_content "PG-13"
-    page.wont_have_content "Delete DVD"
-  end
+  # scenario "Member can view a DVD" do
+  #   create_dvd
+  #   sign_in_with_facebook
+  #   visit dvds_path
+  #   click_on "Divergent"
+  #   page.must_have_content "2014"
+  #   page.must_have_content "PG-13"
+  #   page.wont_have_content "Edit"
+  # end
 
   scenario "NullUser can view a DVD" do
     create_dvd
