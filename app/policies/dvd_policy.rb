@@ -16,7 +16,7 @@ class DvdPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    user.admin? || user.member?
   end
 
   def destroy?

@@ -30,9 +30,13 @@ class DvdsController < ApplicationController
   end
 
   def update
+    @user = current_user
+    @dvd = Dvd.find(params[:id])
+    @user.dvds << @dvd
+
     if @dvd.update(dvd_params)
       if @dvd.published?
-        redirect_to @dvd, notice: "#{@dvd.title} has been updated."
+        redirect_to dvds_path
       else
         redirect_to @dvd, notice: "Thank you for your request."
       end
