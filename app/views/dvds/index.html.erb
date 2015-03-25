@@ -22,15 +22,30 @@
                 <td class="col-md-2 show-table"><%= dvd.genre %></td>
                 <td class="col-md-1 show-table"><%= dvd.year %></td>
                 <td class="col-md-1 show-table"><%= dvd.rated %></td>
-                <% if !dvd.published? %>
+                <% if dvd.published? %>
+                  <td class="col-md-2 show-table">Published</td>
+                <% else %>
                   <td class="col-md-2 show-table">Unpublished</td>
                 <% end %>
+
+                <% if DvdPolicy.new(current_user, @dvd).update? %>
+                  <%= form_for([@user, dvd]) do |f| %>
+                    <td class="col-md-1 show-table">
+                      <%= f.hidden_field :user_id, value: current_user.id %>
+                      <%= f.submit "Add to My Collection" %>
+                    </td>
+                  <% end %>
+                <% end %>
+
+
+
               </tr>
             <% end %>
           <% end %>
         </tbody>
       </table>
       <br>
+
       <% if DvdPolicy.new(current_user, @dvd).create? %>
       <div class="actions">
         <a class="btn btn-default" <%= link_to 'Request a new DVD', new_dvd_path %></a>
