@@ -16,4 +16,13 @@ feature "Show a user" do
     page.must_have_content("Address")
     page.must_have_content("111 First Street")
   end
+
+  scenario "user can see their own DVD collection on the profile" do
+    create_dvd
+    sign_in
+    visit dvds_path
+    click_on "Signed in as Test One!"
+    page.must_have_content "Test One"
+    page.must_have_content "Address:"
+  end
 end

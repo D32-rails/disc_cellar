@@ -24,9 +24,19 @@
     </div>
 
       <div>
+        <table class="dvd-index">
         <% @user.dvds.each do |dvd| %>
-          <p><%= dvd.title %></p>
+          <tr>
+            <td class="col-md-2 show-table"><%= link_to dvd.title, dvd %></td>
+            <%= form_for(current_user) do |f| %>
+              <td class="col-md-1 show-table">
+                <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
+                <%= f.submit "Remove from My Collection" %>
+              </td>
+            <% end %>
+          </tr>
         <% end %>
+        </table>
 
       </div>
     </div>

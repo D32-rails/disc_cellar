@@ -35,9 +35,9 @@
                     </td>
                   <% else %>
 
-                    <%= form_for([@user, dvd]) do |f| %>
+                    <%= form_for(current_user) do |f| %>
                       <td class="col-md-1 show-table">
-                        <%= f.hidden_field :user_id, value: current_user.id %>
+                        <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids.push(dvd.id) %>
                         <%= f.submit "Add to My Collection" %>
                       </td>
                     <% end %>
