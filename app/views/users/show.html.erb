@@ -37,11 +37,17 @@
               </td>
 
               <td>
-                <%= form_for(@borrowship) do |f| %>
-                  <%= f.hidden_field :borrower_id, value: current_user.id %>
-                  <%= f.hidden_field :lender_id, value: @user.id %>
-                  <%= f.hidden_field :dvd_id, value: dvd.id %>
-                  <%= f.submit "Ask to Borrow" %>
+                <% if current_user == @user%>
+                  <p>Can't borrow!</p>
+                <% elsif current_user.borrowings.where(lender_id: @user.id, dvd_id: dvd.id).present? %>
+                  <p>Requested to borrow</p>
+                <% else %>
+                  <%= form_for(@borrowship) do |f| %>
+                    <%= f.hidden_field :borrower_id, value: current_user.id %>
+                    <%= f.hidden_field :lender_id, value: @user.id %>
+                    <%= f.hidden_field :dvd_id, value: dvd.id %>
+                    <%= f.submit "Ask to Borrow" %>
+                  <% end %>
                 <% end %>
               </td>
             <% end %>
