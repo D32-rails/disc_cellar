@@ -24,19 +24,29 @@
     </div>
 
       <div>
+        <table class="dvd-index">
         <% @user.dvds.each do |dvd| %>
-          <p>
-            <%= dvd.title %>
-            <% if current_user %>
-              <%= form_for(@borrowship) do |f| %>
-                <%= f.hidden_field :borrower_id, value: current_user.id %>
-                <%= f.hidden_field :lender_id, value: @user.id %>
-                <%= f.hidden_field :dvd_id, value: dvd.id %>
-                <%= f.submit "Ask to Borrow" %>
-              <% end %>
+          <tr>
+            <td class="col-md-2 show-table"><%= link_to dvd.title, dvd %></td>
+            <%= form_for(current_user) do |f| %>
+              <td class="col-md-1 show-table">
+                <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
+                <%= f.submit "Remove from My Collection" %>
+              </td>
             <% end %>
-          </p>
+            <% if current_user %>
+              <td>
+                <%= form_for(@borrowship) do |f| %>
+                  <%= f.hidden_field :borrower_id, value: current_user.id %>
+                  <%= f.hidden_field :lender_id, value: @user.id %>
+                  <%= f.hidden_field :dvd_id, value: dvd.id %>
+                  <%= f.submit "Ask to Borrow" %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
         <% end %>
+        </table>
 
       </div>
     </div>

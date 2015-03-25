@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: "Thank you for your request."
+      redirect_to dvds_path, notice: "Your profile has been updated."
     else
       render :edit
     end
@@ -29,6 +29,13 @@ class UsersController < ApplicationController
     @borrowship = Borrowship.create
   end
 
+  def destroy
+    @user = current_user
+    @user.dvds.find(params[:dvd_id]).destroy
+
+    redirect_to article_comments_path(@article)
+  end
+
   private
 
   def set_user
@@ -36,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :address, :role)
+    params[:user][:dvd_ids] = params[:user][:dvd_ids].split(" ").map(&:to_i)
+    params.require(:user).permit(:name, :address, :role, dvd_ids:[])
   end
 end

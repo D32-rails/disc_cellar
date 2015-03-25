@@ -16,11 +16,10 @@
     <div>
     <ul class="nav navbar-nav">
       <li><%= link_to "See DVDs", dvds_path %></li>
-      <li><%= link_to "Members", users_path %></li>
+        <li><%= link_to "Members", users_path %></li>
       <% if current_user %>
-        <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-        <p class="navbar-text navbar-right">Signed in as <strong><%= current_user.name %></strong>!</p>
-
+      <li class="pull-right"><%= link_to "Signed in as #{current_user.name}!", user_path(current_user.id) %></li>
+        <li class="pull-right"><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
       <% else %>
         <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
       <% end %>
