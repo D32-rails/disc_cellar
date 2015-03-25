@@ -43,7 +43,6 @@ class UsersController < ApplicationController
 
   def user_params
     params[:user][:dvd_ids] = params[:user][:dvd_ids].split(" ").map(&:to_i)
-
     params.require(:user).permit(:name, :address, :role, dvd_ids:[])
   end
 end

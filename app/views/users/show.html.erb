@@ -28,11 +28,15 @@
         <% @user.dvds.each do |dvd| %>
           <tr>
             <td class="col-md-2 show-table"><%= link_to dvd.title, dvd %></td>
-            <td class="col-md-2 show-table"><a class="btn btn-default btn-right" <%= link_to "Remove from My Collection", dvd, method: :delete, data: { confirm: 'Are you sure?' } %></a><td/>
+            <%= form_for(current_user) do |f| %>
+              <td class="col-md-1 show-table">
+                <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
+                <%= f.submit "Remove from My Collection" %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
         </table>
-
 
       </div>
     </div>
