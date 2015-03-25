@@ -28,6 +28,13 @@ class UsersController < ApplicationController
     @dvds = @user.dvds.all
   end
 
+  def destroy
+    @user = current_user
+    @user.dvds.find(params[:dvd_id]).destroy
+
+    redirect_to article_comments_path(@article)
+  end
+
   private
 
   def set_user
@@ -35,6 +42,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :address, :role)
+    params[:user][:dvd_ids] = params[:user][:dvd_ids].split(" ").map(&:to_i)
+
+    params.require(:user).permit(:name, :address, :role, dvd_ids:[])
   end
 end

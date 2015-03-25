@@ -24,9 +24,15 @@
     </div>
 
       <div>
+        <table class="dvd-index">
         <% @user.dvds.each do |dvd| %>
-          <p><%= dvd.title %></p>
+          <tr>
+            <td class="col-md-2 show-table"><%= link_to dvd.title, dvd %></td>
+            <td class="col-md-2 show-table"><a class="btn btn-default btn-right" <%= link_to "Remove from My Collection", dvd, method: :delete, data: { confirm: 'Are you sure?' } %></a><td/>
+          </tr>
         <% end %>
+        </table>
+
 
       </div>
     </div>
