@@ -11,7 +11,6 @@ class UserPolicy < ApplicationPolicy
       else
         scope.where(published: true)
       end
-
     end
 
     def logged_in?

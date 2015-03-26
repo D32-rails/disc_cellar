@@ -20,7 +20,6 @@ class BorrowshipsController < ApplicationController
     @borrowship = Borrowship.find(params[:id])
     if @borrowship.update(borrowship_params)
       flash[:notice] = "Success!"
-      # redirect_to user_path(@borrowship.borrower.id)
       redirect_to user_path(session[:user_id])
     else
       flash[:notice] = "Failure!"
