@@ -32,15 +32,19 @@ class ActiveSupport::TestCase
   end
 
   def sign_in(user = :one)
+    setup_omniauth(user)
+    visit root_path
+    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
+
+    click_on("Sign in with Facebook")
+  end
+
+  def setup_omniauth(user)
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(:facebook,
                              uid: users(user).uid,
                              info: { name: users(user).name },
                              credentials: { token: users(user).oauth_token, expires_at: users(user).oauth_expires_at }
                             )
-    visit root_path
-    Capybara.current_session.driver.request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
-
-    click_on("Sign in with Facebook")
   end
 end
