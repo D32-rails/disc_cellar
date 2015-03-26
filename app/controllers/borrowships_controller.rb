@@ -1,4 +1,6 @@
 class BorrowshipsController < ApplicationController
+  before_action :set_borrowship, only: [:update, :destroy]
+
   def index
     @borrowships = Borrowship.all
   end
@@ -17,7 +19,6 @@ class BorrowshipsController < ApplicationController
   end
 
   def update
-    @borrowship = Borrowship.find(params[:id])
     if @borrowship.update(borrowship_params)
       flash[:notice] = "Success!"
       redirect_to user_path(session[:user_id])
@@ -28,7 +29,6 @@ class BorrowshipsController < ApplicationController
   end
 
   def destroy
-    @borrowship = Borrowship.find(params[:id])
     @borrowship.destroy
     redirect_to user_path(session[:user_id]), notice: "Request deleted/returned."
   end
@@ -37,5 +37,9 @@ class BorrowshipsController < ApplicationController
 
   def borrowship_params
     params.require(:borrowship).permit(:borrower_id, :lender_id, :dvd_id, :accepted, :returned)
+  end
+
+  def set_borrowship
+    @borrowship = Borrowship.find(params[:id])
   end
 end
