@@ -1,7 +1,9 @@
-<% [:notice, :error, :alert].each do |level| %>
-  <% unless flash[level].blank? %>
-    <div class="alert-message <%= flash_class(level) %>">
-      <a class="close" href="#">x</a>
-    </div>
+<% flash.each do |name, msg| %>
+  <% [:notice, :error, :alert].each do |level| %>
+    <% unless flash[level].blank? %>
+      <div class="alert-message <%= flash_class(level) %>">
+        <%= msg %><a class="close" href="#">x</a>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
