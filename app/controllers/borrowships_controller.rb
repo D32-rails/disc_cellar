@@ -19,17 +19,24 @@ class BorrowshipsController < ApplicationController
   def update
     @borrowship = Borrowship.find(params[:id])
     if @borrowship.update(borrowship_params)
-      flash[:notice] = "Something went right!"
-      redirect_to dvds_path
+      flash[:notice] = "Success!"
+      # redirect_to user_path(@borrowship.borrower.id)
+      redirect_to user_path(session[:user_id])
     else
-      flash[:notice] = "Something went wrong!"
-      redirect_to dvds_path
+      flash[:notice] = "Failure!"
+      redirect_to user_path(@borrowship.borrower.id)
     end
+  end
+
+  def destroy
+    @borrowship = Borrowship.find(params[:id])
+    @borrowship.destroy
+    redirect_to user_path(session[:user_id]), notice: "Request deleted/returned."
   end
 
   private
 
   def borrowship_params
-    params.require(:borrowship).permit(:borrower_id, :lender_id, :dvd_id)
+    params.require(:borrowship).permit(:borrower_id, :lender_id, :dvd_id, :accepted, :returned)
   end
 end

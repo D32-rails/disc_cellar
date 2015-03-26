@@ -27,6 +27,8 @@ class UsersController < ApplicationController
   def show
     @dvds = @user.dvds.all
     @borrowship = Borrowship.new
+    @borrowings = Borrowship.where(borrower_id: @user.id)
+    @lendings = Borrowship.where(lender_id: @user.id)
   end
 
   def destroy

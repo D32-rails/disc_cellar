@@ -1,0 +1,28 @@
+<% unless @borrowings.empty? %>
+  <table class="dvd-index">
+    <tr>
+      <th>DVD Title</th>
+      <th>Lender</th>
+      <th>Approved?</th>
+    </tr>
+    <% @borrowings.each do |borrowing| %>
+      <tr>
+        <td>
+          <%= borrowing.dvd.title %>
+        </td>
+        <td>
+          <%= borrowing.lender.name %>
+        </td>
+        <td>
+          <% if borrowing.accepted.nil? %>
+            Waiting for approval
+          <% else %>
+            Approved!
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No DVDs borrowed.</p>
+<% end %>
