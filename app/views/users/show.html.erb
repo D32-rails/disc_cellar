@@ -1,23 +1,25 @@
-<h4 id="notice"><%= notice %></h4>
-<div class="page-title">
-  <h1><%= @user.name %></h1>
+<div>
+  <h4 id="notice"><%= notice %></h4>
+  <h1 class="page-title"><%= @user.name %></h1>
 </div><br/>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <p class="show-table">
-        <strong>Name:</strong>
-        <%= @user.name %><br />
+      <!-- <div class="opaque"   CHANGE TO A TABLE>  -->
+        <p>
+          <strong>Name:</strong>
+          <%= @user.name %><br />
 
-        <strong>Email:</strong>
-        <%= @user.email %><br />
+          <strong>Email:</strong>
+          <%= @user.email %><br />
 
-        <strong>Address:</strong>
-        <%= @user.address %><br />
+          <strong>Address:</strong>
+          <%= @user.address %><br />
 
-        <strong>Role:</strong>
-        <%= @user.role %><br />
-      </p>
+          <strong>Role:</strong>
+          <%= @user.role %><br />
+        </p>
+      <!-- </div> -->
     <div class="actions">
       <% if UserPolicy.new(current_user, @user).logged_in? %>
         <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-default" %>
@@ -25,10 +27,11 @@
       <%= link_to 'Back', users_path, class: "btn btn-default" %>
     </div>
 
+      <h1 class="page-title">DVDs this member owns:</h1>
       <div>
         <table class="dvd-index">
         <% @user.dvds.each do |dvd| %>
-          <tr>
+          <tr class="opaque">
             <td class="col-md-4 show-table"><%= link_to dvd.title, dvd %></td>
             <% if current_user %>
               <td class="col-md-1 show-table">

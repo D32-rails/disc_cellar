@@ -1,6 +1,6 @@
-<h4 id="notice"><%= notice %></h4>
-<div class="page-title">
-  <h1><%= @dvd.title %></h1>
+<div>
+  <h4 id="notice"><%= notice %></h4>
+  <h1 class="page-title"><%= @dvd.title %></h1>
 </div><br/>
 <div class="container">
   <div class="row">
@@ -18,15 +18,29 @@
         <strong>Published:</strong>
         <%= @dvd.published %><br />
       </p>
-    <div class="actions">
-      <% if DvdPolicy.new(current_user, @dvd).update? %>
-        <a class="btn btn-default"<%= link_to 'Edit DVD details', edit_dvd_path(@dvd) %> </a>
-      <% end %>
-      <% if DvdPolicy.new(current_user, @dvd).destroy? %>
-        <a class="btn btn-default" <%= link_to 'Delete DVD', @dvd, method: :delete, data: { confirm: 'Are you sure?' } %></a>
-      <% end %>
-      <a class="btn btn-default" <%= link_to 'Back', dvds_path %></a>
+      <div class="actions">
+        <% if DvdPolicy.new(current_user, @dvd).update? %>
+          <a class="btn btn-default"<%= link_to 'Edit DVD details', edit_dvd_path(@dvd) %> </a>
+        <% end %>
+        <% if DvdPolicy.new(current_user, @dvd).destroy? %>
+          <a class="btn btn-default" <%= link_to 'Delete DVD', @dvd, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+        <% end %>
+        <a class="btn btn-default" <%= link_to 'Back', dvds_path %></a>
+      </div>
     </div>
+  </div>
+</div>
+
+
+<div>
+  <h3 class="page-title">Members who have this DVD:</h3>
+</div><br/>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="opaque">
+      <% @dvd.users.each do |user| %>
+        <p><%= link_to user.name, user %></p>
+      <% end %>
     </div>
   </div>
 </div>

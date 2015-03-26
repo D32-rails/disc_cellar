@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
   <title>Disc Cellar</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<div class="container">
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="navbar-header">
-      <a class="navbar-brand" <%= link_to "Disc Cellar", root_path %>></a>
+    <div class="container">
+      <nav id="navi-height" class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+          <ul class="nav navbar-nav">
+            <li><a id="navibrand" class="navbar-brand" <%= link_to "Disc Cellar", root_path %></a></li>
+            <li><%= link_to "See DVDs", dvds_path %></li>
+            <li><%= link_to "Members", users_path %></li>
+            <% if current_user %>
+              <li class="navbar-right"><%= link_to "Signed in as #{current_user.name}!", user_path(current_user.id) %></li>
+              <li class="navbar-right"><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+            <% else %>
+              <li class="navbar-right"><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     </div>
-    <div>
-    <ul class="nav navbar-nav">
-      <li><%= link_to "See DVDs", dvds_path %></li>
-        <li><%= link_to "Members", users_path %></li>
-      <% if current_user %>
-      <li class="pull-right"><%= link_to "Signed in as #{current_user.name}!", user_path(current_user.id) %></li>
-        <li class="pull-right"><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-      <% else %>
-        <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"
+          <%= render 'layouts/flash_messages' %>
 
-<%= render 'layouts/flash_messages' %>
-
-<%= yield %>
-
-</body>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
