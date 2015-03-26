@@ -2,7 +2,7 @@
 <div class="page-title">
   <h1><%= @user.name %></h1>
 </div><br/>
-<div class="container"
+<div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <p class="show-table">
@@ -42,7 +42,7 @@
 
               <td>
                 <% if current_user == @user%>
-                  <p>Can't borrow!</p>
+                  <p>Owned</p>
                 <% elsif current_user.borrowings.where(lender_id: @user.id, dvd_id: dvd.id).present? %>
                   <p>Requested to borrow</p>
                 <% else %>
@@ -58,8 +58,27 @@
           </tr>
         <% end %>
         </table>
-
       </div>
     </div>
   </div>
+
+
+  <% if current_user == @user %>
+    <% session[:user_id] = @user.id %>
+    <div class="row"><br>
+      <div class="col-md-5 col-md-offset-1">
+        <p class="show-table">
+          <strong>Borrowing:</strong>
+          <%= render 'borrowing' %>
+        </p>
+
+      </div>
+      <div class="col-md-5">
+        <p class="show-table">
+          <strong>Lending:</strong>
+          <%= render 'lending' %>
+        </p>
+      </div>
+    </div>
+  <% end %>
 </div>
