@@ -1,13 +1,20 @@
 require "test_helper"
 
 feature "edit a DVD" do
-  # scenario "members cannot publish edited DVD details from the global collection" do
-  #   create_dvd
-  #   sign_in_with_facebook
-  #   visit dvds_path
-  #   click_on "Divergent"
-  #   page.wont_have_content "Edit"
-  # end
+  scenario "members cannot hack the edit DVD details" do
+    create_dvd
+    sign_in
+    visit dvds_path
+    click_on "Divergent"
+    page.wont_have_content "Edit"
+    visit edit_dvd_path(dvds(:grownups).id)
+    page.must_have_content "not authorized"
+  end
+
+  scenario "unauthenticated users cannot hack the edit DVD details" do
+    visit edit_dvd_path(dvds(:grownups).id)
+    page.must_have_content "not authorized"
+  end
 
   scenario "admin user can edit DVD details from the global collection" do
     create_dvd
