@@ -19,7 +19,9 @@
         <%= @user.role %><br />
       </p>
     <div class="actions">
-      <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-default" %>
+      <% if UserPolicy.new(current_user, @user).logged_in? %>
+        <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-default" %>
+      <% end %>
       <%= link_to 'Back', users_path, class: "btn btn-default" %>
     </div>
 
@@ -30,9 +32,11 @@
             <td class="col-md-2 show-table"><%= link_to dvd.title, dvd %></td>
             <% if current_user %>
               <td class="col-md-1 show-table">
-                <%= form_for(current_user) do |f| %>
-                  <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
-                  <%= f.submit "Remove from My Collection" %>
+                <% if UserPolicy.new(current_user, @user).logged_in? %>
+                  <%= form_for(current_user) do |f| %>
+                    <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
+                    <%= f.submit "Remove from My Collection" %>
+                  <% end %>
                 <% end %>
               </td>
 
