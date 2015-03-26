@@ -12,11 +12,15 @@ class DvdPolicy < ApplicationPolicy
   end
 
   def create?
+    user.admin?
+  end
+
+  def show?
     user.admin? || user.member?
   end
 
   def update?
-    user.admin? || user.member?
+    user.admin?
   end
 
   def destroy?

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324213004) do
+ActiveRecord::Schema.define(version: 20150324225438) do
+
+  create_table "borrowships", force: :cascade do |t|
+    t.integer  "dvd_id"
+    t.integer  "borrower_id"
+    t.integer  "lender_id"
+    t.boolean  "accepted"
+    t.boolean  "returned"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "dvds", force: :cascade do |t|
     t.string   "genre"

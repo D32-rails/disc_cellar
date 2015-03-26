@@ -1,0 +1,29 @@
+<h4 id="notice"><%= notice %></h4>
+<div class="page-title">
+  <h1>All Borrow Requests</h1>
+</div><br/>
+<div class="container">
+    <div class="col-md-6 col-md-offset-1">
+      <table class="dvd-index">
+        <thead>
+          <tr>
+            <th class="col-md-3 col-md-offset-1 show-table">Borrower</th>
+            <th class="col-md-2 show-table">Lender</th>
+            <th class="col-md-1 show-table">DVD</th>
+            <th class="col-md-1 show-table">Approved?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @borrowships.each do |borrowship| %>
+            <tr>
+              <td><%= borrowship.borrower.name %></td>
+              <td><%= borrowship.lender.name %></td>
+              <td><%= borrowship.dvd.title %></td>
+              <td>---</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>

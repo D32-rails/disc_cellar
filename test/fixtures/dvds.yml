@@ -1,16 +1,34 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  genre: MyString
-  year: 1
-  rated: MyString
-  published: false
-  image_url:
+grownups:
+  title: Grown Ups
+  genre: Comedy
+  year: 2007
+  rated: PG-13
+  published: true
+  users: admin, one
 
-two:
-  genre: MyString
-  year: 1
-  rated: MyString
-  published: false
-  image_url:
+grownupstwo:
+  title: Grown Ups 2
+  genre: Comedy
+  year: 2013
+  rated: PG-13
+  published: true
+  users:
+
+toystory:
+  title: Toy Story
+  genre: Family
+  year: 1995
+  rated: G
+  published: true
+  users: one
+
+toystorytwo:
+  title: Toy Story 2
+  genre: Family
+  year: 1999
+  rated: G
+  published: true
+  users: two

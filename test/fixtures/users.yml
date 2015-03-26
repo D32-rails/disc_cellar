@@ -10,6 +10,7 @@ one:
   oauth_expires_at: 2017-03-23 12:03:05
   address: 111 First Street
   email: one@example.com
+  dvds: grownups, toystory
 
 two:
   provider: facebook
@@ -20,6 +21,7 @@ two:
   oauth_expires_at: 2017-03-23 12:03:05
   address: 222 Second Street
   email: two@example.com
+  dvds: toystorytwo
 
 admin:
   provider: facebook
@@ -30,3 +32,4 @@ admin:
   oauth_expires_at: 2017-03-23 12:03:05
   address: 222 Second Street
   email: three@example.com
+  dvds: grownups

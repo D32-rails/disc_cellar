@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :dvds
   resources :users
+  resources :borrowships
 
   get 'auth/facebook/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')

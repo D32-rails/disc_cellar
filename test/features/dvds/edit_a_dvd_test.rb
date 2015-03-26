@@ -11,7 +11,7 @@ feature "edit a DVD" do
 
   scenario "admin user can edit DVD details from the global collection" do
     create_dvd
-    sign_in(:admin)
+    sign_in_with_facebook_as_admin
     visit dvds_path
     click_on "Divergent"
     click_on "Edit DVD details"
