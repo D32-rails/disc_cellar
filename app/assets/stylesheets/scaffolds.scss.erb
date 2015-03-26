@@ -3,8 +3,9 @@ body {
   padding-top: 150px;
   background-color: #fff;
   background-image: image-url('<%= asset_path("library.jpg") %>');
-  background-repeat: repeat-x;
-  background-size:100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 175%;
   color: #5F1C58;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -14,8 +15,27 @@ body {
 p, ol, ul, td {
   padding: 10px;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #fff;
+}
+
+td {
+  color: black;
+}
+
+.opaque {
+  background-color: #fefefe;
+  opacity: 0.8;
+  color: #fff;
+}
+
+#navibrand {
+  font-size: 200%;
+}
+
+#navi-height {
+  height: 30px;
 }
 
 nav {
@@ -31,9 +51,7 @@ ul {
 }
 
 .page-title {
-  background-color: #fff;
-  border-radius: 10px;
-  opacity: 0.8;
+  color: #fefefe;
 }
 
 .show-table {
@@ -42,15 +60,11 @@ ul {
 }
 
 .dvd-index {
-  background-color: #fff;
-  border-radius: 10px;
-  opacity: 0.8;
+  color: #fefefe;
 }
 
-p {
-  background-color: #fff;
-  border-radius: 10px;
-  opacity: 0.8;
+.white {
+  color: #fefefe;
 }
 
 pre {
@@ -59,17 +73,15 @@ pre {
   font-size: 11px;
 }
 
-.show-table {
-  font-size: 1.2em;
-}
 
 a {
-  color: #000;
+  font-size: 1.2em;
+  color: #1B1D18;
   &:visited {
-    color: #666;
+    color: #2E2F2D;
   }
   &:hover {
-    color: #fff;
+    color: #4A4D45;
     background-color: #000;
   }
 }

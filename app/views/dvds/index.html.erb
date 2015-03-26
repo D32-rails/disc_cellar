@@ -1,6 +1,6 @@
-<h4 id="notice"><%= notice %></h4>
-<div class="page-title">
-  <h1>Viewing all DVDs</h1>
+<div>
+  <h4 id="notice"><%= notice %></h4>
+  <h1 class="page-title">Viewing all DVDs</h1>
 </div><br/>
 <div class="container">
     <div class="col-md-10 col-md-offset-1">
@@ -17,7 +17,7 @@
         <tbody>
           <% @dvds.each do |dvd| %>
             <% if dvd.published? || DvdPolicy.new(current_user, @dvd).publish %>
-              <tr>
+              <tr class="opaque">
                 <td class="col-md-3 show-table"><%= link_to dvd.title, dvd %></td>
                 <td class="col-md-2 show-table"><%= dvd.genre %></td>
                 <td class="col-md-1 show-table"><%= dvd.year %></td>
@@ -34,18 +34,14 @@
                       Already in collection
                     </td>
                   <% else %>
-
                     <%= form_for(current_user) do |f| %>
                       <td class="col-md-1 show-table">
                         <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids.push(dvd.id) %>
                         <%= f.submit "Add to My Collection" %>
                       </td>
                     <% end %>
-
                   <% end %>
                 <% end %>
-
-
               </tr>
             <% end %>
           <% end %>
@@ -60,4 +56,3 @@
     <% end %>
   </div>
 </div>
-
