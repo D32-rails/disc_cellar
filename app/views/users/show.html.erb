@@ -16,8 +16,10 @@
           <strong>Address:</strong>
           <%= @user.address %><br />
 
-          <strong>Role:</strong>
-          <%= @user.role %><br />
+          <% if current_user.role == "admin" %>
+            <strong>Role:</strong>
+            <%= @user.role %><br />
+          <% end %>
         </p>
       <!-- </div> -->
     <div class="actions">

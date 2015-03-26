@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params[:user][:dvd_ids] = params[:user][:dvd_ids].split(" ").map(&:to_i) unless params[:user][:dvd_ids].nil?
+    params[:user][:dvd_ids] = params[:user][:dvd_ids].split(" ").map(&:to_i) if params[:user][:dvd_ids]
     params.require(:user).permit(:name, :address, :role, dvd_ids: [])
   end
 end
