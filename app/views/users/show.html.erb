@@ -4,7 +4,7 @@
 </div><br/>
 <div class="container"
   <div class="row">
-    <div class="col-md-5 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1">
       <p class="show-table">
         <strong>Name:</strong>
         <%= @user.name %><br />
@@ -29,7 +29,7 @@
         <table class="dvd-index">
         <% @user.dvds.each do |dvd| %>
           <tr>
-            <td class="col-md-2 show-table"><%= link_to dvd.title, dvd %></td>
+            <td class="col-md-4 show-table"><%= link_to dvd.title, dvd %></td>
             <% if current_user %>
               <td class="col-md-1 show-table">
                 <% if UserPolicy.new(current_user, @user).logged_in? %>

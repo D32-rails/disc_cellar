@@ -3,14 +3,14 @@
   <h1>Viewing all DVDs</h1>
 </div><br/>
 <div class="container">
-    <div class="col-md-6 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1">
       <table class="dvd-index">
         <thead>
           <tr>
-            <th class="col-md-3 col-md-offset-1 show-table">Title</th>
+            <th class="col-md-3 show-table">Title</th>
             <th class="col-md-2 show-table">Genre</th>
             <th class="col-md-1 show-table">Year</th>
-            <th class="col-md-1 show-table">Rated</th>
+            <th class="col-md-3 show-table">Rated</th>
           </tr>
         </thead>
 
@@ -18,10 +18,10 @@
           <% @dvds.each do |dvd| %>
             <% if dvd.published? || DvdPolicy.new(current_user, @dvd).publish %>
               <tr>
-                <td class="col-md-3 col-md-offset-1 show-table"><%= link_to dvd.title, dvd %></td>
+                <td class="col-md-3 show-table"><%= link_to dvd.title, dvd %></td>
                 <td class="col-md-2 show-table"><%= dvd.genre %></td>
                 <td class="col-md-1 show-table"><%= dvd.year %></td>
-                <td class="col-md-1 show-table"><%= dvd.rated %></td>
+                <td class="col-md-3 show-table"><%= dvd.rated %></td>
                 <% if dvd.published? %>
                   <td class="col-md-2 show-table">Published</td>
                 <% else %>
