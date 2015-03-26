@@ -11,9 +11,11 @@ class DvdsController < ApplicationController
 
   def new
     @dvd = Dvd.new
+    authorize @dvd
   end
 
   def edit
+    authorize @dvd
   end
 
   def create
@@ -42,6 +44,7 @@ class DvdsController < ApplicationController
   end
 
   def destroy
+    authorize @dvd
     @dvd.destroy
     redirect_to dvds_url, notice: "This DVD has been deleted."
   end
