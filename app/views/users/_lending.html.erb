@@ -1,0 +1,44 @@
+<% unless @lendings.empty? %>
+  <table class="dvd-index">
+    <tr>
+      <th>DVD Title</th>
+      <th>Borrower</th>
+      <th>Approve</th>
+      <th>Return</th>
+    </tr>
+      <% @lendings.each do |lending| %>
+        <tr>
+          <td>
+            <%= lending.dvd.title %>
+          </td>
+          <td>
+            <%= lending.borrower.name %>
+          </td>
+          <td>
+            <% if lending.accepted.nil? %>
+              <%= form_for(lending) do |f| %>
+                <%= f.hidden_field :accepted, value: true %>
+                <%= f.submit "Approve" %>
+              <% end %>
+              <%= form_for(lending, method: :delete) do |f| %>
+                <%= f.submit "Deny" %>
+              <% end %>
+            <% else %>
+              Approved
+            <% end %>
+          </td>
+          <td>
+            <% if lending.accepted && !lending.returned %>
+              <%= form_for(lending, method: :delete) do |f| %>
+                <%= f.submit "Return" %>
+              <% end %>
+            <% elsif lending.accepted && lending.returned %>
+              Returned
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+  </table>
+<% else %>
+  <p>No DVDs lent out.</p>
+<% end %>
