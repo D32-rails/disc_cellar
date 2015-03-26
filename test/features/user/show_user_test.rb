@@ -7,11 +7,13 @@ feature "Show a user" do
   end
 
   scenario "can see a user profile" do
+    sign_in
     visit user_path(users(:one).id)
     page.must_have_content(users(:one).name)
   end
 
   scenario "can see a user's address on the profile" do
+    sign_in
     visit user_path(users(:one).id)
     page.must_have_content("Address")
     page.must_have_content("111 First Street")
