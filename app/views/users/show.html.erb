@@ -1,89 +1,86 @@
-<div>
-  <h4 id="notice"><%= notice %></h4>
-  <h1 class="page-title"><%= @user.name %></h1>
-</div><br/>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <!-- <div class="opaque"   CHANGE TO A TABLE>  -->
-        <p>
-          <strong>Name:</strong>
-          <%= @user.name %><br />
-
-          <strong>Email:</strong>
-          <%= @user.email %><br />
-
-          <strong>Address:</strong>
-          <%= @user.address %><br />
-
-          <% if current_user.role == "admin" %>
-            <strong>Role:</strong>
-            <%= @user.role %><br />
-          <% end %>
-        </p>
-      <!-- </div> -->
-    <div class="actions">
-      <% if UserPolicy.new(current_user, @user).logged_in? %>
-        <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-default" %>
-      <% end %>
-      <%= link_to 'Back', users_path, class: "btn btn-default" %>
-    </div>
-
-      <h1 class="page-title">DVDs this member owns:</h1>
-      <div>
-        <table class="dvd-index">
-        <% @user.dvds.each do |dvd| %>
-          <tr class="opaque">
-            <td class="col-md-4 show-table"><%= link_to dvd.title, dvd %></td>
-            <% if current_user %>
-              <td class="col-md-1 show-table">
-                <% if UserPolicy.new(current_user, @user).logged_in? %>
-                  <%= form_for(current_user) do |f| %>
-                    <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
-                    <%= f.submit "Remove from My Collection" %>
-                  <% end %>
-                <% end %>
-              </td>
-
-              <td>
-                <% if current_user == @user%>
-                  <p>Owned</p>
-                <% elsif current_user.borrowings.where(lender_id: @user.id, dvd_id: dvd.id).present? %>
-                  <p>Requested to borrow</p>
-                <% else %>
-                  <%= form_for(@borrowship) do |f| %>
-                    <%= f.hidden_field :borrower_id, value: current_user.id %>
-                    <%= f.hidden_field :lender_id, value: @user.id %>
-                    <%= f.hidden_field :dvd_id, value: dvd.id %>
-                    <%= f.submit "Ask to Borrow" %>
-                  <% end %>
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-        </table>
-      </div>
-    </div>
+<div class="col-s-12">
+  <div class="page-title">
+    <h1 class="page-title"><%= @user.name %></h1>
   </div>
-
-
+</div>
+<div class="container-fluid">
   <% if current_user == @user %>
     <% session[:user_id] = @user.id %>
-    <div class="row"><br>
-      <div class="col-md-5 col-md-offset-1">
-        <p class="show-table">
-          <strong>Borrowing:</strong>
-          <%= render 'borrowing' %>
-        </p>
-
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="page-title">Borrowing:</h3>
+        <%= render 'borrowing' %>
       </div>
-      <div class="col-md-5">
-        <p class="show-table">
-          <strong>Lending:</strong>
-          <%= render 'lending' %>
-        </p>
+      <div class="col-md-6">
+        <h3 class="page-title">Lending:</h3>
+        <%= render 'lending' %>
       </div>
     </div>
   <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="page-title"><%= @user.name.split[0] %>'s Information</h3>
+      <table class="dvd-index opaque">
+          <tr>
+            <td class="col-md-2 show-table"><strong>Name</strong></td>
+            <td class="col-md-2 show-table"><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td class="col-md-2 show-table"><strong>Email</strong></td>
+            <td class="col-md-2 show-table"><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td class="col-md-2 show-table"><strong>Address</strong></td>
+            <td class="col-md-2 show-table"><%= @user.address %></td>
+          </tr>
+          <% if current_user.role == "admin" %>
+            <tr>
+              <td class="col-md-2 show-table"><strong>Role</strong></td>
+              <td class="col-md-2 show-table"><%= @user.role %></td>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+      <% if @user == current_user %>
+        <h3 class="page-title">DVDs you own:</h3>
+      <% else %>
+        <h3 class="page-title">DVDs <%= @user.name.split[0] %> owns:</h3>
+      <% end %>
+      <table class="dvd-index">
+          <% @user.dvds.each do |dvd| %>
+            <tr class="opaque">
+              <td class="col-md-1 show-table"><%= link_to dvd.title, dvd, {:style=>'color:#190C38;', :class=>"css_cl"} %></td>
+                <% if current_user %>
+                  <td class="col-md-1 show-table">
+                    <% if UserPolicy.new(current_user, @user).logged_in? %>
+                      <%= form_for(current_user) do |f| %>
+                        <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids - [dvd.id] %>
+                        <%= f.submit "Remove from Collection" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+
+                  <td class="col-md-2 show-table">
+                    <% if current_user == @user%>
+                      Owned
+                    <% elsif current_user.borrowings.where(lender_id: @user.id, dvd_id: dvd.id).present? %>
+                      Requested to borrow
+                    <% else %>
+                      <%= form_for(@borrowship) do |f| %>
+                        <%= f.hidden_field :borrower_id, value: current_user.id %>
+                        <%= f.hidden_field :lender_id, value: @user.id %>
+                        <%= f.hidden_field :dvd_id, value: dvd.id %>
+                        <%= f.submit "Ask to Borrow" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

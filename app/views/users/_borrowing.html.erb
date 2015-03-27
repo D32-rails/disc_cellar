@@ -1,19 +1,21 @@
 <% unless @borrowings.empty? %>
-  <table class="dvd-index">
-    <tr>
-      <th>DVD Title</th>
-      <th>Lender</th>
-      <th>Approved?</th>
-    </tr>
+
+
+<table class="dvd-index">
+  <tr>
+    <th class="col-md-3 show-table">DVD Title</th>
+    <th class="col-md-1 show-table">Lender</th>
+    <th class="col-md-1 show-table">Approved?</th>
+  </tr>
     <% @borrowings.each do |borrowing| %>
-      <tr>
-        <td>
+      <tr class="opaque">
+        <td  class="col-md-3 show-table">
           <%= borrowing.dvd.title %>
         </td>
-        <td>
-          <%= borrowing.lender.name %>
+        <td  class="col-md-5 show-table">
+          <%= borrowing.lender.name.split[0] %>
         </td>
-        <td>
+        <td  class="col-md-1 show-table">
           <% if borrowing.accepted.nil? %>
             Waiting for approval
           <% else %>
