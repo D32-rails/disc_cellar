@@ -58,7 +58,7 @@
 
       <% if DvdPolicy.new(current_user, @dvd).create? %>
       <div class="actions">
-        <a class="btn btn-default" <%= link_to 'Request a new DVD', new_dvd_path, {:style=>'color:#190C38;', :class=>"css_cl"} %></a>
+        <a class="btn btn-default" <%= link_to 'Add a New DVD', new_dvd_path, {:style=>'color:#190C38;', :class=>"css_cl"} %></a>
       </div>
     <% end %>
   </div>
