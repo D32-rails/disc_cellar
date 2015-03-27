@@ -4,14 +4,14 @@ feature "add a DVD" do
   scenario "a new DVD path exists" do
     sign_in(:admin)
     visit dvds_path
-    click_on "Request a new DVD"
-    page.must_have_content "Request a new DVD"
+    click_on "Add a New DVD"
+    page.must_have_content "Add a New DVD"
   end
 
   scenario "member cannot request new DVDs" do
     sign_in
     visit dvds_path
-    page.wont_have_content "Request a new DVD"
+    page.wont_have_content "Add a New DVD"
   end
 
   scenario "member cannot hack the new DVDs path" do

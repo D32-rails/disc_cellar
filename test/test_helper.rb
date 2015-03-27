@@ -11,7 +11,7 @@ class ActiveSupport::TestCase
   def create_dvd
     sign_in(:admin)
     visit dvds_path
-    click_on "Request a new DVD"
+    click_on "Add a New DVD"
     fill_in "Title", with: "Divergent"
     fill_in "Genre", with: "Adventure, Sci-Fi, Thriller"
     fill_in "Year", with: 2014
@@ -23,7 +23,7 @@ class ActiveSupport::TestCase
 
   def request_dvd
     visit dvds_path
-    click_on "Request a new DVD"
+    click_on "Add a New DVD"
     fill_in "Title", with: "Divergent"
     fill_in "Genre", with: "Adventure, Sci-Fi, Thriller"
     fill_in "Year", with: 2014
