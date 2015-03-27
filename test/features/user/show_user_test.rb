@@ -22,8 +22,7 @@ feature "Show a user" do
   scenario "user can see their own DVD collection on the profile" do
     create_dvd
     sign_in
-    visit dvds_path
-    click_on "Signed in as Test One!"
+    visit user_path(users(:one).id)
     page.must_have_content "Test One"
     page.must_have_content "Address:"
   end

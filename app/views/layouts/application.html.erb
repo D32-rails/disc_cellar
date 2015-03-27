@@ -7,27 +7,36 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-
     <div class="container">
-      <nav id="navi-height" class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header">
-          <ul class="nav navbar-nav">
-            <li><a id="navibrand" class="navbar-brand" <%= link_to "Disc Cellar", root_path %></a></li>
-            <li><%= link_to "See DVDs", dvds_path %></li>
-            <li><%= link_to "Members", users_path %></li>
-            <% if current_user %>
-              <li class="navbar-right"><%= link_to "Signed in as #{current_user.name}!", user_path(current_user.id) %></li>
-              <li class="navbar-right"><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-            <% else %>
-              <li class="navbar-right"><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
-            <% end %>
-          </ul>
-        </div>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <a id="navibrand" class="navbar-brand" <%= link_to "Disc Cellar", root_path %></a>
+
+        <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-label"Left Align" aria-expanded="true">
+          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+          <% if current_user %>
+            <li role="presentation"><a role="menuitem" tabindex="-1"<%= link_to "Profile", user_path(current_user.id) %></a></li>
+          <% end %>
+          <li role="presentation"><a role="menuitem" tabindex="-1"<%= link_to "See all DVDs", dvds_path %></a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1"<%= link_to "Members", users_path %></a></li>
+          <% if current_user %>
+            <li role="presentation"><a role="menuitem" tabindex="-1"<%= link_to "Sign out", signout_path, id: "sign_out" %></a></li>
+          <% else %>
+            <li role="presentation"><a role="menuitem" tabindex="-1"<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+          <% end %>
+        </ul>
       </nav>
     </div>
+    </div>
+      <% if current_user %>
+        <p class="pull-right white"><%= "Signed in as #{current_user.name}!" %></p>
+      <% end %>
     <div class="container">
       <div class="row">
-        <div class="col-md-12"
+        <div class="col-md-12">
+
           <%= render 'layouts/flash_messages' %>
 
           <%= yield %>

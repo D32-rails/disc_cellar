@@ -11,7 +11,7 @@
     </div>
   <% end %>
 <div class="container">
-    <div class="col-md-6 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1 input-lg">
       <div class="field form">
         <%= f.label :title %><br>
         <%= f.text_field :title %>
@@ -36,7 +36,7 @@
       <% end %>
     <div class="actions">
       <input class="btn btn-default" type="submit" value="Submit request">
-      <a class="btn btn-default" <%= link_to 'Back', dvds_path %></a>
+      <a class="btn btn-default" <%= link_to 'Back', dvds_path, {style: 'color:#190C38;', class: "css_class"} %></a>
     </div>
   </div>
 </div>
