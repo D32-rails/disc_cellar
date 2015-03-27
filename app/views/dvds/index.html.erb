@@ -10,8 +10,12 @@
             <th class="col-md-3 show-table">Genre</th>
             <th class="col-md-3 col-xs-0 show-table">Year</th>
             <th class="col-md-3 show-table">Rated</th>
-            <th class="col-md-3 show-table">P/U</th>
-            <th class="col-md-3 show-table">Already own it?</th>
+            <% if current_user %>
+              <% if current_user.admin? %>
+                <th class="col-md-3 show-table">P/U</th>
+              <% end %>
+              <th class="col-md-3 show-table">Already own it?</th>
+            <% end %>
           </tr>
         </thead>
 
@@ -23,10 +27,12 @@
                 <td class="col-md-3 show-table"><%= dvd.genre %></td>
                 <td class="col-md-3 col-xs-0 show-table"><%= dvd.year %></td>
                 <td class="col-md-3 show-table"><%= dvd.rated %></td>
-                <% if dvd.published? %>
-                  <td class="col-md-1 show-table">P</td>
-                <% else %>
-                  <td class="col-md-1 show-table">U</td>
+                <% if current_user && current_user.admin? %>
+                  <% if dvd.published? %>
+                    <td class="col-md-1 show-table">P</td>
+                  <% else %>
+                    <td class="col-md-1 show-table">U</td>
+                  <% end %>
                 <% end %>
 
                 <% if DvdPolicy.new(current_user, @dvd).show? %>
