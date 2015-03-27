@@ -24,7 +24,7 @@ feature "Show a user" do
     sign_in
     visit user_path(users(:one).id)
     page.must_have_content "Test One"
-    page.must_have_content "Address:"
+    page.must_have_content "Address"
   end
 
   scenario "user can see their borrowings on their profile" do

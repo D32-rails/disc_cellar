@@ -3,8 +3,8 @@
   <table class="dvd-index">
     <tr>
       <th class="col-md-3 show-table">DVD Title</th>
-      <th class="col-md-5 show-table">Borrower</th>
-      <th class="col-md-1 show-table">Approve</th>
+      <th class="col-md-3 show-table">Borrower</th>
+      <th class="col-md-3 show-table">Approve</th>
       <th class="col-md-1 show-table">Return</th>
     </tr>
       <% @lendings.each do |lending| %>
@@ -12,10 +12,10 @@
           <td class="col-md-3 show-table">
             <%= lending.dvd.title %>
           </td>
-          <td class="col-md-5 show-table">
+          <td class="col-md-3 show-table">
             <%= lending.borrower.name.split[0] %>
           </td>
-          <td class="col-md-1 show-table">
+          <td class="col-md-3 show-table">
             <% if lending.accepted.nil? %>
               <%= form_for(lending) do |f| %>
                 <%= f.hidden_field :accepted, value: true %>

@@ -6,7 +6,7 @@
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
     <% @user.each do |user| %>
-      <p><%= link_to user.name, user_path(user.id) %></p>
+      <h4><%= link_to user.name, user_path(user.id) %></h4>
     <% end %>
   </div>
 </div>
