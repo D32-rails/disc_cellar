@@ -1,9 +1,7 @@
-<div>
-  <h1 class="page-title"><%= @dvd.title %></h1>
-</div><br/>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-4 col-md-offset-2">
+    <h1 class="page-title"><%= @dvd.title %></h1>
       <p class="show-table">
         <strong>Genre:</strong>
         <%= @dvd.genre %><br />
@@ -16,30 +14,29 @@
 
         <strong>Published:</strong>
         <%= @dvd.published %><br />
+
+        <% if DvdPolicy.new(current_user, @dvd).destroy? %>
+          <%= link_to 'Delete DVD', @dvd, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </p>
       <div class="actions">
         <% if DvdPolicy.new(current_user, @dvd).update? %>
-          <a class="btn btn-default"<%= link_to 'Edit DVD details', edit_dvd_path(@dvd) %> </a>
+          <a class="btn btn-default"<%= link_to 'Edit DVD details', edit_dvd_path(@dvd), {:style=>'color:#190C38;', :class=>"css_cl"} %> </a>
         <% end %>
-        <% if DvdPolicy.new(current_user, @dvd).destroy? %>
-          <a class="btn btn-default" <%= link_to 'Delete DVD', @dvd, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+        <a class="btn btn-default" <%= link_to 'Back', dvds_path, {:style=>'color:#190C38;', :class=>"css_cl"} %></a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-2">
+    <h2 class="page-title">Members who have this DVD:</h2><br/>
+      <div class="opaque"
+      <br/>
+        <% @dvd.users.each do |user| %>
+          <p><strong><%= link_to user.name, user, {:style=>'color:#190C38;', :class=>"css_cl"} %></strong></p>
         <% end %>
-        <a class="btn btn-default" <%= link_to 'Back', dvds_path %></a>
       </div>
     </div>
   </div>
 </div>
 
-
-<div>
-  <h3 class="page-title">Members who have this DVD:</h3>
-</div><br/>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <div class="opaque">
-      <% @dvd.users.each do |user| %>
-        <p><%= link_to user.name, user %></p>
-      <% end %>
-    </div>
-  </div>
-</div>
