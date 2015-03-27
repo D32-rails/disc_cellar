@@ -1,13 +1,13 @@
-<div>
-  <h1 class="page-title">Members:</h1>
-</div><br/>
+<div class="col-s-12">
+  <div class="page-title">
+    <h1>Members:</h1>
+  </div>
+</div>
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
-    <div class="opaque"
-      <% @user.each do |user| %>
-        <p><%= link_to user.name, user_path(user.id) %></p>
-      <% end %>
-    </div>
+    <% @user.each do |user| %>
+      <p><%= link_to user.name, user_path(user.id) %></p>
+    <% end %>
   </div>
 </div>
 

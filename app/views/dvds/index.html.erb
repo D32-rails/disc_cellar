@@ -1,16 +1,17 @@
 <div>
-  <h4 id="notice"><%= notice %></h4>
   <h1 class="page-title">Viewing all DVDs</h1>
 </div><br/>
 <div class="container">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12">
       <table class="dvd-index">
         <thead>
           <tr>
             <th class="col-md-3 show-table">Title</th>
-            <th class="col-md-2 show-table">Genre</th>
-            <th class="col-md-1 show-table">Year</th>
+            <th class="col-md-3 show-table">Genre</th>
+            <th class="col-md-3 col-xs-0 show-table">Year</th>
             <th class="col-md-3 show-table">Rated</th>
+            <th class="col-md-3 show-table">P/U</th>
+            <th class="col-md-3 show-table">Already own it?</th>
           </tr>
         </thead>
 
@@ -18,14 +19,14 @@
           <% @dvds.each do |dvd| %>
             <% if dvd.published? || DvdPolicy.new(current_user, @dvd).publish %>
               <tr class="opaque">
-                <td class="col-md-3 show-table"><%= link_to dvd.title, dvd %></td>
-                <td class="col-md-2 show-table"><%= dvd.genre %></td>
-                <td class="col-md-1 show-table"><%= dvd.year %></td>
+                <td class="col-md-3 show-table"><%= link_to dvd.title, dvd, {:style=>'color:#190C38;', :class=>"css_cl"} %></td>
+                <td class="col-md-3 show-table"><%= dvd.genre %></td>
+                <td class="col-md-3 col-xs-0 show-table"><%= dvd.year %></td>
                 <td class="col-md-3 show-table"><%= dvd.rated %></td>
                 <% if dvd.published? %>
-                  <td class="col-md-2 show-table">Published</td>
+                  <td class="col-md-1 show-table">P</td>
                 <% else %>
-                  <td class="col-md-2 show-table">Unpublished</td>
+                  <td class="col-md-1 show-table">U</td>
                 <% end %>
 
                 <% if DvdPolicy.new(current_user, @dvd).show? %>
@@ -37,7 +38,7 @@
                     <%= form_for(current_user) do |f| %>
                       <td class="col-md-1 show-table">
                         <%= f.hidden_field :dvd_ids, value: current_user.dvd_ids.push(dvd.id) %>
-                        <%= f.submit "Add to My Collection" %>
+                        <%= f.submit "Add to My Collection", :class => 'submit_class_name_here' %>
                       </td>
                     <% end %>
                   <% end %>
@@ -51,7 +52,7 @@
 
       <% if DvdPolicy.new(current_user, @dvd).create? %>
       <div class="actions">
-        <a class="btn btn-default" <%= link_to 'Request a new DVD', new_dvd_path %></a>
+        <a class="btn btn-default" <%= link_to 'Request a new DVD', new_dvd_path, {:style=>'color:#190C38;', :class=>"css_cl"} %></a>
       </div>
     <% end %>
   </div>

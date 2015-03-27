@@ -1,11 +1,10 @@
 body {
   position: relative;
-  padding-top: 150px;
+  padding-top: 50px;
   background-color: #fff;
   background-image: image-url('<%= asset_path("library.jpg") %>');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: auto 175%;
   color: #5F1C58;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -24,30 +23,38 @@ td {
   color: black;
 }
 
+.navbar-header {
+  width:100%;
+}
+
+label {
+  color: #fefefe;
+}
+
+.pull-right {
+  margin: 10px 10px;
+}
+
 .opaque {
   background-color: #fefefe;
-  opacity: 0.8;
-  color: #fff;
+  opacity: 0.75;
+  color: #190C38;
 }
 
 #navibrand {
   font-size: 200%;
 }
 
-#navi-height {
-  height: 30px;
-}
-
 nav {
-  color: #fff;
+  color: black;
 }
 
 ul {
-  color: #fff;
+  color: #190C38;
 }
 
 .form {
-  color: #000;
+  color: #190C38;
 }
 
 .page-title {
@@ -59,8 +66,13 @@ ul {
   padding: 8px;
 }
 
+.sailor-man {
+  color: #190C38;
+}
+
 .dvd-index {
   color: #fefefe;
+  border: 1px solid black;
 }
 
 .white {
@@ -76,13 +88,12 @@ pre {
 
 a {
   font-size: 1.2em;
-  color: #1B1D18;
+  color: #fefefe;
   &:visited {
-    color: #2E2F2D;
+    color: #fefefe;
   }
   &:hover {
-    color: #4A4D45;
-    background-color: #000;
+    color: #68FFC2;
   }
 }
 
@@ -94,7 +105,6 @@ div {
 
 .vcenter {
     vertical-align: middle;
-    display: inline-block;
 }
 
 #notice {

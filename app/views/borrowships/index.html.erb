@@ -1,26 +1,27 @@
-<div>
-  <h4 id="notice"><%= notice %></h4>
-  <h1 class="page-title">All Borrow Requests</h1>
-</div><br/>
-<div class="container">
-    <div class="col-md-10 col-md-offset-1">
+<div class="col-s-12">
+  <div class="page-title">
+    <h1 class="page-title">All Borrow Requests</h1>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="col-md-12">
       <table class="dvd-index">
         <thead>
           <tr>
-            <th class="col-md-3 col-md-offset-1 show-table">Borrower</th>
-            <th class="col-md-2 show-table">Lender</th>
-            <th class="col-md-1 show-table">DVD</th>
+            <th class="col-md-4 col-md-offset-1">Borrower</th>
+            <th class="col-md-4 show-table">Lender</th>
+            <th class="col-md-3 show-table">DVD</th>
             <th class="col-md-1 show-table">Approved?</th>
           </tr>
         </thead>
 
         <tbody>
           <% @borrowships.each do |borrowship| %>
-            <tr>
-              <td><%= borrowship.borrower.name %></td>
-              <td><%= borrowship.lender.name %></td>
-              <td><%= borrowship.dvd.title %></td>
-              <td>---</td>
+            <tr class="opaque">
+              <td class="col-md-4 col-md-offset-1"><%= borrowship.borrower.name %></td>
+              <td class="col-md-4 col-md-offset-1"><%= borrowship.lender.name %></td>
+              <td class="col-md-4 col-md-offset-1"><%= borrowship.dvd.title %></td>
+              <td class="col-md-1 col-md-offset-1">---</td>
             </tr>
           <% end %>
         </tbody>
