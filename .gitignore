@@ -15,6 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
+/coverage
 
 # User settings
 .DS_Store
