@@ -16,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug'
+  gem 'codeclimate-test-reporter', require: false
   gem 'dotenv-rails'
   gem 'faker'
   gem 'guard'
