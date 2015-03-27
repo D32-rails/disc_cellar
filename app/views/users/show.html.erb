@@ -72,11 +72,13 @@
             <td class="col-md-2 show-table"><strong>Email</strong></td>
             <td class="col-md-2 show-table"><%= @user.email %></td>
           </tr>
-          <tr>
-            <td class="col-md-2 show-table"><strong>Address</strong></td>
-            <td class="col-md-2 show-table"><%= @user.address %></td>
-          </tr>
-          <% if current_user.role == "admin" %>
+          <% if current_user %>
+            <tr>
+              <td class="col-md-2 show-table"><strong>Address</strong></td>
+              <td class="col-md-2 show-table"><%= @user.address %></td>
+            </tr>
+          <% end %>
+          <% if current_user && current_user.role == "admin" %>
             <tr>
               <td class="col-md-2 show-table"><strong>Role</strong></td>
               <td class="col-md-2 show-table"><%= @user.role %></td>
