@@ -14,6 +14,6 @@ feature "view all DVDs" do
     visit dvds_path
     page.must_have_content "Divergent"
     page.must_have_content "Viewing all DVDs"
-    page.wont_have_content "Request a new DVD"
+    page.wont_have_content "Add a New DVD"
   end
 end
