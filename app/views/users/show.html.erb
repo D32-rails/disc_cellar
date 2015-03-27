@@ -84,15 +84,13 @@
               <td class="col-md-2 show-table"><%= @user.role %></td>
             </tr>
           <% end %>
-          <% if @user == current_user %>
-            <tr>
-              <td class="col-md-2">
-                <%= link_to "Edit", edit_user_path(@user), class: "btn btn-default", style: 'color:#190C38;' %><br><br>
-              </td>
-              <td class="col-md-2 show-table"></td>
-            </tr>
-          <% end %>
       </table>
+          <% if @user == current_user %>
+            <br>
+            <div class="actions">
+              <%= link_to "Edit", edit_user_path(@user), class: "btn btn-default", style: 'color:#190C38;' %>
+            </div>
+          <% end %>
     </div>
 
       </div>
